@@ -37,3 +37,17 @@ print("-"*20)
 print("Estadísticas descriptivas:")
 print(df.describe())
 print("-"*20)
+
+'''
+No se necesita de una limpieza o preprocesamiento tan extensos,
+esto debido a que el dataset no cuenta con valores nulos o duplicados a los cuales se tenga que imputar o 
+eliminar. Además las columnas manejan el tipo de datos que se espera,
+por lo que no hay necesidad de hacer un cambio de tipo de datos.
+'''
+
+# Se normalizan los nombres de las columnas para que no tengan espacios y sean más fáciles de manejar
+df.columns = df.columns.str.lower().str.replace(" ", "_").str.replace("/", "_")
+
+print("Nombres de las columnas normalizados:")
+print(df.columns.tolist())
+print("-"*20)
