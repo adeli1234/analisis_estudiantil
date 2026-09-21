@@ -51,3 +51,18 @@ df.columns = df.columns.str.lower().str.replace(" ", "_").str.replace("/", "_")
 print("Nombres de las columnas normalizados:")
 print(df.columns.tolist())
 print("-"*20)
+
+# Se crea una variable llamada "average_Score"
+
+df["average_score"] = ((df['math_score'] + df['reading_score'] + df['writing_score']) / 3).round(2)
+print("Promedio de puntajes:")
+print(df["average_score"].head())
+print("-"*20)
+
+# Codificación de calificaciones (clasificación de rendimiento)
+
+labels = ['Bajo', 'Medio', 'Alto']
+df['rendimiento'] = pd.cut(df['average_score'], bins=[0, 60, 80, 100], labels=labels, right=True)
+print("Clasificación de rendimiento:")
+print(df[['math_score', 'reading_score', 'writing_score', 'average_score', 'rendimiento']].head())
+print("-"*20)
